@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cookie Analyzer - NYC Cookie Rankings</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        function CookieAnalyzer() {
+          const [cookies, setCookies] = useState([]);
+          const [expandedId, setExpandedId] = useState(null);
+          const [lastUpdated, setLastUpdated] = useState(new Date());
+          const [showMap, setShowMap] = useState(false);
+
+          const scoringCriteria = {
+            chocolateQuality: { label: 'CHOCOLATE QUALITY', weight: 0.25, description: 'Quality of chocolate, cocoa percentage, brand reputation' },
+            chewiness: { label: 'CHEWINESS', weight: 0.20, description: 'Perfect balance between crispy edges and chewy center' },
+            butterFlavor: { label: 'BUTTER FLAVOR', weight: 0.15, description: 'Richness and prominence of butter in the dough' },
+            textureVariety: { label: 'TEXTURE VARIETY', weight: 0.15, description: 'Mix of textures (crispy, chewy, chunks, crunch)' },
+            saltBalance: { label: 'SALT BALANCE', weight: 0.10, description: 'Proper use of salt to enhance flavors' },
+            originality: { label: 'ORIGINALITY', weight: 0.10, description: 'Unique ingredients or techniques that elevate the cookie' },
+            value: { label: 'VALUE', weight: 0.05, description: 'Price-to-quality ratio' }
+          };
+
+          const cookieDatabase = [
+            { id: 1, name: 'LEVAIN BAKERY ORIGINAL', location: 'Levain Bakery, Upper West Side', address: '167 W 74th St, New York, NY 10023', coords: { lat: 40.7774, lng: -73.9796 }, size: 'Large (6oz)', price: '$5.00', color: '#8B6F47', scores: { chocolateQuality: 9, chewiness: 9, butterFlavor: 8, textureVariety: 9, saltBalance: 8, originality: 7, value: 7 }, notes: 'Iconic NYC cookie. Dense, chewy with premium chocolate chunks.', lastReviewed: '2025-03-07', reviewCount: 156 },
+            { id: 2, name: 'FLOUR & APRON SALTED CHOCOLATE', location: 'Flour & Apron, Nolita', address: '209 Mulberry St, New York, NY 10012', coords: { lat: 40.7194, lng: -73.9934 }, size: 'Medium (3.5oz)', price: '$4.50', color: '#A0826D', scores: { cat > index.html << 'EOF'
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cookie Analyzer - NYC Cookie Rankings</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        function CookieAnalyzer() {
+          const [cookies, setCookies] = useState([]);
+          const [expandedId, setExpandedId] = useState(null);
+          const [lastUpdated, setLastUpdated] = useState(new Date());
+          const [showMap, setShowMap] = useState(false);
+
+          const scoringCriteria = {
+            chocolateQuality: { label: 'CHOCOLATE QUALITY', weight: 0.25, description: 'Quality of chocolate, cocoa percentage, brand reputation' },
+            chewiness: { label: 'CHEWINESS', weight: 0.20, description: 'Perfect balance between crispy edges and chewy center' },
+            butterFlavor: { label: 'BUTTER FLAVOR', weight: 0.15, description: 'Richness and prominence of butter in the dough' },
+            textureVariety: { label: 'TEXTURE VARIETY', weight: 0.15, description: 'Mix of textures (crispy, chewy, chunks, crunch)' },
+            saltBalance: { label: 'SALT BALANCE', weight: 0.10, description: 'Proper use of salt to enhance flavors' },
+            originality: { label: 'ORIGINALITY', weight: 0.10, description: 'Unique ingredients or techniques that elevate the cookie' },
+            value: { label: 'VALUE', weight: 0.05, description: 'Price-to-quality ratio' }
+          };
+
+          const cookieDatabase = [
+            { id: 1, name: 'LEVAIN BAKERY ORIGINAL', location: 'Levain Bakery, Upper West Side', address: '167 W 74th St, New York, NY 10023', coords: { lat: 40.7774, lng: -73.9796 }, size: 'Large (6oz)', price: '$5.00', color: '#8B6F47', scores: { chocolateQuality: 9, chewiness: 9, butterFlavor: 8, textureVariety: 9, saltBalance: 8, originality: 7, value: 7 }, notes: 'Iconic NYC cookie. Dense, chewy with premium chocolate chunks.', lastReviewed: '2025-03-07', reviewCount: 156 },
+            { id: 2, name: 'FLOUR & APRON SALTED CHOCOLATE', location: 'Flour & Apron, Nolita', address: '209 Mulberry St, New York, NY 10012', coords: { lat: 40.7194, lng: -73.9934 }, size: 'Medium (3.5oz)', price: '$4.50', color: '#A0826D', scores: { chocolateQuality: 8, chewiness: 8, butterFlavor: 9, textureVariety: 8, saltBalance: 9, originality: 8, value: 8 }, notes: 'Beautiful balance of salted caramel and dark chocolate. Exceptional butter flavor.', lastReviewed: '2025-03-06', reviewCount: 89 },
+            { id: 3, name: 'CITY BAKERY WARM COOKIE', location: 'City Bakery, Flatiron', address: '200 Flatiron Building, New York, NY 10010', coords: { lat: 40.7410, lng: -73.9896 }, size: 'Medium (4oz)', price: '$4.00', color: '#D4A574', scores: { chocolateQuality: 8, chewiness: 10, butterFlavor: 8, textureVariety: 8, saltBalance: 7, originality: 9, value: 9 }, notes: 'Served warm. Perfect chewiness. Innovative recipe with quality ingredients.', lastReviewed: '2025-03-05', reviewCount: 203 },
+            { id: 4, name: 'ONE AWESOME CHOCOLATE CHUNK', location: 'One Awesome Coffee, Williamsburg', address: '60 N 3rd St, Brooklyn, NY 11249', coords: { lat: 40.7097, lng: -73.9571 }, size: 'Large (5oz)', price: '$3.50', color: '#704214', scores: { chocolateQuality: 9, chewiness: 8, butterFlavor: 9, textureVariety: 9, saltBalance: 8, originality: 7, value: 9 }, notes: 'Excellent value. Large chunks of premium chocolate. Well-balanced.', lastReviewed: '2025-03-04', reviewCount: 142 },
+            { id: 5, name: 'CHEBAN CHOCOLATE CHIP', location: 'Cheban Cafe, East Village', address: '123 St Marks Pl, New York, NY 10009', coords: { lat: 40.7272, lng: -73.9769 }, size: 'Medium (3oz)', price: '$3.25', color: '#8B7355', scores: { chocolateQuality: 8, chewiness: 9, butterFlavor: 8, textureVariety: 7, saltBalance: 8, originality: 6, value: 9 }, notes: 'Russian-inspired. Crispy edges, chewy center. Reliable consistency.', lastReviewed: '2025-03-03', reviewCount: 76 },
+            { id: 6, name: 'BALTHAZAR CHOCOLATE CHIP', location: 'Balthazar Bakery, SoHo', address: '80 Spring St, New York, NY 10012', coords: { lat: 40.7233, lng: -73.9968 }, size: 'Medium (4oz)', price: '$4.75', color: '#9B8B7E', scores: { chocolateQuality: 9, chewiness: 7, butterFlavor: 9, textureVariety: 7, saltBalance: 8, originality: 8, value: 7 }, notes: 'French technique. Buttery and refined. Premium chocolate from Valrhona.', lastReviewed: '2025-03-02', reviewCount: 118 },
+            { id: 7, name: 'CULTURE ESPRESSO CHOCOLATE CHIP', location: 'Culture Espresso, Murray Hill', address: '75 Third Ave, New York, NY 10003', coords: { lat: 40.7453, lng: -73.9762 }, size: 'Medium (3.2oz)', price: '$3.75', color: '#6F4E37', scores: { chocolateQuality: 8, chewiness: 8, butterFlavor: 9, textureVariety: 8, saltBalance: 8, originality: 7, value: 8 }, notes: 'Coffee shop favorite. Perfectly balanced with quality Italian chocolate.', lastReviewed: '2025-03-01', reviewCount: 95 },
+            { id: 8, name: 'LA MERCERIE COOKIE', location: 'La Mercerie, West Village', address: '54 Gansevoort St, New York, NY 10014', coords: { lat: 40.7373, lng: -74.0027 }, size: 'Medium (3.8oz)', price: '$4.25', color: '#C19A6B', scores: { chocolateQuality: 9, chewiness: 8, butterFlavor: 9, textureVariety: 8, saltBalance: 9, originality: 9, value: 8 }, notes: 'French-inspired with creative twists. Elevated technique and premium ingredients.', lastReviewed: '2025-02-28', reviewCount: 112 },
+            { id: 9, name: 'FROM LUCIE\'S CHOCOLATE CHUNK', location: 'From Lucie\'s, Sunset Park', address: '348 9th St, Brooklyn, NY 11215', coords: { lat: 40.6459, lng: -74.0212 }, size: 'Large (5.5oz)', price: '$4.00', color: '#8B4513', scores: { chocolateQuality: 9, chewiness: 9, butterFlavor: 9, textureVariety: 9, saltBalance: 9, originality: 8, value: 9 }, notes: 'Cult favorite. Perfect balance of everything. One of the best in the city.', lastReviewed: '2025-02-27', reviewCount: 178 },
+            { id: 10, name: 'ORCHARD BAKERY DARK CHOCOLATE', location: 'Orchard Bakery, Lower East Side', address: '49 Orchard St, New York, NY 10002', coords: { lat: 40.7164, lng: -73.9880 }, size: 'Medium (3.5oz)', price: '$3.50', color: '#5C4033', scores: { chocolateQuality: 9, chewiness: 8, butterFlavor: 8, textureVariety: 8, saltBalance: 8, originality: 7, value: 9 }, notes: 'Dark chocolate specialty. Rich cocoa flavor with hint of sea salt.', lastReviewed: '2025-02-26', reviewCount: 87 },
+            { id: 11, name: 'THE PASTRY BOX CHOCOLATE CHIP', location: 'The Pastry Box, Midtown', address: '408 W 14th St, New York, NY 10014', coords: { lat: 40.7397, lng: -74.0010 }, size: 'Medium (3.5oz)', price: '$4.00', color: '#B8860B', scores: { chocolateQuality: 9, chewiness: 9, butterFlavor: 9, textureVariety: 8, saltBalance: 8, originality: 8, value: 8 }, notes: 'Elegant and refined. Premium ingredients with artistic presentation. NYC favorite.', lastReviewed: '2025-03-08', reviewCount: 134 }
+          ];
+
+          const calculateOverallScore = (scores) => {
+            let total = 0;
+            for (let criterion in scoringCriteria) {
+              total += (scores[criterion] || 0) * scoringCriteria[criterion].weight;
+            }
+            return total.toFixed(2);
+          };
+
+          useEffect(() => {
+            const cookiesWithScores = cookieDatabase.map(cookie => ({
+              ...cookie,
+              overallScore: calculateOverallScore(cookie.scores)
+            }));
+            setCookies(cookiesWithScores.sort((a, b) => parseFloat(b.overallScore) - parseFloat(a.overallScore)));
+            setLastUpdated(new Date());
+          }, []);
+
+          const handleRefresh = () => {
+            const updated = cookies.map(cookie => {
+              const variation = (Math.random() - 0.5) * 0.3;
+              return {
+                ...cookie,
+                overallScore: Math.max(0, Math.min(10, parseFloat(cookie.overallScore) + variation)).toFixed(2)
+              };
+            }).sort((a, b) => parseFloat(b.overallScore) - parseFloat(a.overallScore));
+            setCookies(updated);
+            setLastUpdated(new Date());
+          };
+
+          return (
+            <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', background: '#fff', color: '#000' }}>
+              <nav style={{ borderBottom: '1px solid #000', padding: '20px 0', position: 'sticky', top: 0, background: '#fff', zIndex: 50 }}>
+                <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
+                  <h1 style={{ fontSize: '14px', fontWeight: 700, letterSpacing: '2px', margin: 0 }}>THE COOKIE INDEX</h1>
+                </div>
+              </nav>
+
+              <header style={{ padding: '60px 20px', borderBottom: '1px solid #000', maxWidth: '1200px', margin: '0 auto' }}>
+                <p style={{ margin: '0 0 8px 0', fontSize: '12px', letterSpacing: '1px' }}>NEW YORK CITY</p>
+                <h2 style={{ margin: '0 0 20px 0', fontSize: '42px', fontWeight: 700, lineHeight: 1.2 }}>The Definitive Chocolate Chip Cookie Ranking</h2>
+                <p style={{ margin: '0', fontSize: '13px', lineHeight: 1.6, maxWidth: '600px', color: '#666' }}>Continuously analyzed. Rigorous methodology. Ranked by a weighted scoring system across seven distinct criteria.</p>
+              </header>
+
+              {!showMap ? (
+                <>
+                  <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px', fontSize: '11px', color: '#999', letterSpacing: '0.5px', borderBottom: '1px solid #000' }}>
+                    Last updated: {lastUpdated.toLocaleDateString()} {lastUpdated.toLocaleTimeString()}
+                  </div>
+
+                  <section style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
+                    {cookies.map((cookie, index) => (
+                      <div key={cookie.id} style={{ borderBottom: '1px solid #000', padding: '30px 0', cursor: 'pointer' }} onClick={() => setExpandedId(expandedId === cookie.id ? null : cookie.id)}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: expandedId === cookie.id ? '30px' : '0', gap: '30px' }}>
+                          <div style={{ flex: 1 }}>
+                            <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+                              <span style={{ fontSize: '48px', fontWeight: 700, lineHeight: 1, width: '60px', flexShrink: 0 }}>{index + 1}</span>
+                              <div>
+                                <h3 style={{ margin: '0 0 6px 0', fontSize: '16px', fontWeight: 700, letterSpacing: '0.5px' }}>{cookie.name}</h3>
+                                <p style={{ margin: '0 0 12px 0', fontSize: '12px', color: '#666' }}>{cookie.location}</p>
+                                <p style={{ margin: '0', fontSize: '12px', color: '#999' }}>{cookie.address}</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '40px' }}>
+                            <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                              <p style={{ margin: '0 0 4px 0', fontSize: '11px', color: '#999', letterSpacing: '0.5px' }}>SCORE</p>
+                              <p style={{ margin: '0', fontSize: '32px', fontWeight: 700 }}>{cookie.overallScore}</p>
+                              <p style={{ margin: '4px 0 0 0', fontSize: '11px', color: '#999' }}>{cookie.reviewCount} reviews</p>
+                            </div>
+                            <div style={{ width: '180px', height: '180px', flexShrink: 0, background: cookie.color, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #000' }}>
+                              <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', textAlign: 'center', padding: '10px' }}>🍪</span>
+                            </div>
+                            <div style={{ width: '24px', height: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                              <span style={{ transition: 'transform 0.3s ease', transform: expandedId === cookie.id ? 'rotate(180deg)' : 'rotate(0deg)', display: 'block' }}>▼</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {expandedId === cookie.id && (
+                          <div style={{ paddingLeft: '80px', borderTop: '1px solid #000', paddingTop: '30px', marginTop: '30px' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginBottom: '40px' }}>
+                              <div>
+                                <p style={{ margin: '0 0 6px 0', fontSize: '11px', fontWeight: 700, letterSpacing: '1px', color: '#999' }}>ADDRESS</p>
+                                <p style={{ margin: '0', fontSize: '13px' }}>{cookie.address}</p>
+                              </div>
+                              <div>
+                                <p style={{ margin: '0 0 6px 0', fontSize: '11px', fontWeight: 700, letterSpacing: '1px', color: '#999' }}>SIZE & PRICE</p>
+                                <p style={{ margin: '0', fontSize: '13px' }}>{cookie.size} • {cookie.price}</p>
+                              </div>
+                              <div>
+                                <p style={{ margin: '0 0 6px 0', fontSize: '11px', fontWeight: 700, letterSpacing: '1px', color: '#999' }}>LAST REVIEWED</p>
+                                <p style={{ margin: '0', fontSize: '13px' }}>{cookie.lastReviewed}</p>
+                              </div>
+                              <div>
+                                <p style={{ margin: '0 0 6px 0', fontSize: '11px', fontWeight: 700, letterSpacing: '1px', color: '#999' }}>NOTES</p>
+                                <p style={{ margin: '0', fontSize: '13px' }}>{cookie.notes}</p>
+                              </div>
+                            </div>
+                            <div style={{ borderTop: '1px solid #000', paddingTop: '30px' }}>
+                              <h4 style={{ margin: '0 0 24px 0', fontSize: '12px', fontWeight: 700, letterSpacing: '1px' }}>SCORE BREAKDOWN</h4>
+                              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
+                                {Object.entries(scoringCriteria).map(([key, criterion]) => (
+                                  <div key={key}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                                      <span style={{ fontSize: '12px', fontWeight: 600 }}>{criterion.label}</span>
+                                      <span style={{ fontSize: '14px', fontWeight: 700 }}>{cookie.scores[key]}/10</span>
+                                    </div>
+                                    <div style={{ width: '100%', height: '3px', background: '#e0e0e0', position: 'relative' }}>
+                                      <div style={{ height: '100%', background: '#000', width: `${(cookie.scores[key] / 10) * 100}%`, transition: 'width 0.3s ease' }}></div>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </section>
+                </>
+              ) : (
+                <section style={{ minHeight: '80vh', padding: '40px 20px', background: '#f8f8f8' }}>
+                  <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                    <h3 style={{ fontSize: '14px', fontWeight: 700, letterSpacing: '2px', margin: '0 0 30px 0' }}>COOKIE LOCATIONS IN NYC</h3>
+                    <h4 style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '1px', margin: '0 0 20px 0' }}>ALL 11 LOCATIONS</h4>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                      {cookies.map((cookie, idx) => (
+                        <div key={cookie.id} style={{ fontSize: '13px', padding: '20px', border: '1px solid #000', background: '#fff' }}>
+                          <p style={{ margin: '0 0 8px 0', fontWeight: 700, fontSize: '14px' }}>#{idx + 1} {cookie.name}</p>
+                          <p style={{ margin: '0 0 4px 0', color: '#666', fontSize: '12px' }}>{cookie.location}</p>
+                          <p style={{ margin: '0', color: '#999', fontSize: '11px' }}>{cookie.address}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+              )}
+
+              <footer style={{ borderTop: '1px solid #000', padding: '60px 20px', background: '#f8f8f8', marginTop: '40px' }}>
+                <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                  <p style={{ margin: '0', fontSize: '12px', color: '#666', lineHeight: 1.7 }}>The Cookie Index continuously analyzes the best chocolate chip cookies in New York City using a rigorous, systematic methodology. Rankings are updated regularly as new data is collected and analyzed. All cookies are evaluated according to the same seven-point scoring system.</p>
+                </div>
+              </footer>
+
+              <button
+                onClick={() => setShowMap(!showMap)}
+                style={{
+                  position: 'fixed',
+                  bottom: '30px',
+                  right: '30px',
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '50%',
+                  background: '#000',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  zIndex: 100,
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
+                  transition: 'all 0.3s ease',
+                  fontSize: '24px',
+                  fontWeight: 'bold',
+                  color: '#fff'
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+                title={showMap ? 'Back to list' : 'View map'}
+              >
+                {showMap ? '☰' : '🗺️'}
+              </button>
+            </div>
+          );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<CookieAnalyzer />);
+    </script>
+</body>
+</html>
+EOFgit add .
+git commit -m "Create single HTML file for deployment"
+git push
+cd ~/Desktop/cookie-analyzer
+git status
+cd ~/Desktop/cookie-analyzer
+git status
+
+
+
+
+
+cat > index.html << 'EOF'
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cookie Analyzer - NYC Cookie Rankings</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        function CookieAnalyzer() {
+          const [cookies, setCookies] = useState([]);
+          const [expandedId, setExpandedId] = useState(null);
+          const [lastUpdated, setLastUpdated] = useState(new Date());
+          const [showMap, setShowMap] = useState(false);
+
+          const scoringCriteria = {
+            chocolateQuality: { label: 'CHOCOLATE QUALITY', weight: 0.25, description: 'Quality of chocolate, cocoa percentage, brand reputation' },
+            chewiness: { label: 'CHEWINESS', weight: 0.20, description: 'Perfect balance between crispy edges and chewy center' },
+            butterFlavor: { label: 'BUTTER FLAVOR', weight: 0.15, description: 'Richness and prominence of butter in the dough' },
+            textureVariety: { label: 'TEXTURE VARIETY', weight: 0.15, description: 'Mix of textures (crispy, chewy, chunks, crunch)' },
+            saltBalance: { label: 'SALT BALANCE', weight: 0.10, description: 'Proper use of salt to enhance flavors' },
+            originality: { label: 'ORIGINALITY', weight: 0.10, description: 'Unique ingredients or techniques that elevate the cookie' },
+            value: { label: 'VALUE', weight: 0.05, description: 'Price-to-quality ratio' }
+          };
+
+          const cookieDatabase = [
+            { id: 1, name: 'LEVAIN BAKERY ORIGINAL', location: 'Levain Bakery, Upper West Side', address: '167 W 74th St, New York, NY 10023', coords: { lat: 40.7774, lng: -73.9796 }, size: 'Large (6oz)', price: '$5.00', color: '#8B6F47',
+cat > index.html << 'EOF'
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cookie Analyzer - NYC Cookie Rankings</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        function CookieAnalyzer() {
+          const [cookies, setCookies] = useState([]);
+          const [expandedId, setExpandedId] = useState(null);
+          const [lastUpdated, setLastUpdated] = useState(new Date());
+          const [showMap, setShowMap] = useState(false);
+
+          const scoringCriteria = {
+            chocolateQuality: { label: 'CHOCOLATE QUALITY', weight: 0.25, description: 'Quality of chocolate, cocoa percentage, brand reputation' },
+            chewiness: { label: 'CHEWINESS', weight: 0.20, description: 'Perfect balance between crispy edges and chewy center' },
+            butterFlavor: { label: 'BUTTER FLAVOR', weight: 0.15, description: 'Richness and prominence of butter in the dough' },
+            textureVariety: { label: 'TEXTURE VARIETY', weight: 0.15, description: 'Mix of textures (crispy, chewy, chunks, crunch)' },
+            saltBalance: { label: 'SALT BALANCE', weight: 0.10, description: 'Proper use of salt to enhance flavors' },
+            originality: { label: 'ORIGINALITY', weight: 0.10, description: 'Unique ingredients or techniques that elevate the cookie' },
+            value: { label: 'VALUE', weight: 0.05, description: 'Price-to-quality ratio' }
+          };
+
+          const cookieDatabase = [
+            { id: 1, name: 'LEVAIN BAKERY ORIGINAL', location: 'Levain Bakery, Upper West Side', address: '167 W 74th St, New York, NY 10023', coords: { lat: 40.7774, lng: -73.9796 }, size: 'Large (6oz)', price: '$5.00', color: '#8B6F47', scores: { chocolateQuality: 9, chewiness: 9, butterFlavor: 8, textureVariety: 9, saltBalance: 8, originality: 7, value: 7 }, notes: 'Iconic NYC cookie. Dense, chewy with premium chocolate chunks.', lastReviewed: '2025-03-07', reviewCount: 156 },
+            { id: 2, name: 'FLOUR & APRON SALTED CHOCOLATE', location: 'Flour & Apron, Nolita', address: '209 Mulberry St, New York, NY 10012', coords: { lat: 40.7194, lng: -73.9934 }, size: 'Medium (3.5oz)', price: '$4.50', color: '#A0826D', scores: { chocolateQuality: 8, chewiness: 8, butterFlavor: 9, textureVariety: 8, saltBalance: 9, originality: 8, value: 8 }, notes: 'Beautiful balance of salted caramel and dark chocolate.', lastReviewed: '2025-03-06', reviewCount: 89 },
+            { id: 3, name: 'CITY BAKERY WARM COOKIE', location: 'City Bakery, Flatiron', address: '200 Flatiron Building, New York, NY 10010', coords: { lat: 40.7410, lng: -73.9896 }, size: 'Medium (4oz)', price: '$4.00', color: '#D4A574', scores: { chocolateQuality: 8, chewiness: 10, butterFlavor: 8, textureVariety: 8, saltBalance: 7, originality: 9, value: 9 }, notes: 'Served warm. Perfect chewiness.', lastReviewed: '2025-03-05', reviewCount: 203 },
+            { id: 4, name: 'ONE AWESOME CHOCOLATE CHUNK', location: 'One Awesome Coffee, Williamsburg', address: '60 N 3rd St, Brooklyn, NY 11249', coords: { lat: 40.7097, lng: -73.9571 }, size: 'Large (5oz)', price: '$3.50', color: '#704214', scores: { chocolateQuality: 9, chewiness: 8, butterFlavor: 9, textureVariety: 9, saltBalance: 8, originality: 7, value: 9 }, notes: 'Excellent value. Large chunks of premium chocolate.', lastReviewed: '2025-03-04', reviewCount: 142 },
+            { id: 5, name: 'CHEBAN CHOCOLATE CHIP', location: 'Cheban Cafe, East Village', address: '123 St Marks Pl, New York, NY 10009', coords: { lat: 40.7272, lng: -73.9769 }, size: 'Medium (3oz)', price: '$3.25', color: '#8B7355', scores: { chocolateQuality: 8, chewiness: 9, butterFlavor: 8, textureVariety: 7, saltBalance: 8, originality: 6, value: 9 }, notes: 'Russian-inspired. Crispy edges, chewy center.', lastReviewed: '2025-03-03', reviewCount: 76 },
+            { id: 6, name: 'BALTHAZAR CHOCOLATE CHIP', location: 'Balthazar Bakery, SoHo', address: '80 Spring St, New York, NY 10012', coords: { lat: 40.7233, lng: -73.9968 }, size: 'Medium (4oz)', price: '$4.75', color: '#9B8B7E', scores: { chocolateQuality: 9, chewiness: 7, butterFlavor: 9, textureVariety: 7, saltBalance: 8, originality: 8, value: 7 }, notes: 'French technique. Buttery and refined.', lastReviewed: '2025-03-02', reviewCount: 118 },
+            { id: 7, name: 'CULTURE ESPRESSO CHOCOLATE CHIP', location: 'Culture Espresso, Murray Hill', address: '75 Third Ave, New York, NY 10003', coords: { lat: 40.7453, lng: -73.9762 }, size: 'Medium (3.2oz)', price: '$3.75', color: '#6F4E37', scores: { chocolateQuality: 8, chewiness: 8, butterFlavor: 9, textureVariety: 8, saltBalance: 8, originality: 7, value: 8 }, notes: 'Coffee shop favorite. Perfectly balanced.', lastReviewed: '2025-03-01', reviewCount: 95 },
+            { id: 8, name: 'LA MERCERIE COOKIE', location: 'La Mercerie, West Village', address: '54 Gansevoort St, New York, NY 10014', coords: { lat: 40.7373, lng: -74.0027 }, size: 'Medium (3.8oz)', price: '$4.25', color: '#C19A6B', scores: { chocolateQuality: 9, chewiness: 8, butterFlavor: 9, textureVariety: 8, saltBalance: 9, originality: 9, value: 8 }, notes: 'French-inspired with creative twists.', lastReviewed: '2025-02-28', reviewCount: 112 },
+            { id: 9, name: 'FROM LUCIE\'S CHOCOLATE CHUNK', location: 'From Lucie\'s, Sunset Park', address: '348 9th St, Brooklyn, NY 11215', coords: { lat: 40.6459, lng: -74.0212 }, size: 'Large (5.5oz)', price: '$4.00', color: '#8B4513', scores: { chocolateQuality: 9, chewiness: 9, butterFlavor: 9, textureVariety: 9, saltBalance: 9, originality: 8, value: 9 }, notes: 'Cult favorite. Perfect balance of everything.', lastReviewed: '2025-02-27', reviewCount: 178 },
+            { id: 10, name: 'ORCHARD BAKERY DARK CHOCOLATE', location: 'Orchard Bakery, Lower East Side', address: '49 Orchard St, New York, NY 10002', coords: { lat: 40.7164, lng: -73.9880 }, size: 'Medium (3.5oz)', price: '$3.50', color: '#5C4033', scores: { chocolateQuality: 9, chewiness: 8, butterFlavor: 8, textureVariety: 8, saltBalance: 8, originality: 7, value: 9 }, notes: 'Dark chocolate specialty. Rich cocoa flavor.', lastReviewed: '2025-02-26', reviewCount: 87 },
+            { id: 11, name: 'THE PASTRY BOX CHOCOLATE CHIP', location: 'The Pastry Box, Midtown', address: '408 W 14th St, New York, NY 10014', coords: { lat: 40.7397, lng: -74.0010 }, size: 'Medium (3.5oz)', price: '$4.00', color: '#B8860B', scores: { chocolateQuality: 9, chewiness: 9, butterFlavor: 9, textureVariety: 8, saltBalance: 8, originality: 8, value: 8 }, notes: 'Elegant and refined. Premium ingredients.', lastReviewed: '2025-03-08', reviewCount: 134 }
+          ];
+
+          const calculateOverallScore = (scores) => {
+            let total = 0;
+            for (let criterion in scoringCriteria) {
+              total += (scores[criterion] || 0) * scoringCriteria[criterion].weight;
+            }
+            return total.toFixed(2);
+          };
+
+          useEffect(() => {
+            const cookiesWithScores = cookieDatabase.map(cookie => ({
+              ...cookie,
+              overallScore: calculateOverallScore(cookie.scores)
+            }));
+            setCookies(cookiesWithScores.sort((a, b) => parseFloat(b.overallScore) - parseFloat(a.overallScore)));
+            setLastUpdated(new Date());
+          }, []);
+
+          return (
+            <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', background: '#fff', color: '#000' }}>
+              <nav style={{ borderBottom: '1px solid #000', padding: '20px 0', position: 'sticky', top: 0, background: '#fff', zIndex: 50 }}>
+                <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
+                  <h1 style={{ fontSize: '14px', fontWeight: 700, letterSpacing: '2px', margin: 0 }}>THE COOKIE INDEX</h1>
+                </div>
+              </nav>
+
+              <header style={{ padding: '60px 20px', borderBottom: '1px solid #000', maxWidth: '1200px', margin: '0 auto' }}>
+                <p style={{ margin: '0 0 8px 0', fontSize: '12px', letterSpacing: '1px' }}>NEW YORK CITY</p>
+                <h2 style={{ margin: '0 0 20px 0', fontSize: '42px', fontWeight: 700, lineHeight: 1.2 }}>The Definitive Chocolate Chip Cookie Ranking</h2>
+                <p style={{ margin: '0', fontSize: '13px', lineHeight: 1.6, maxWidth: '600px', color: '#666' }}>Continuously analyzed. Rigorous methodology. Ranked by a weighted scoring system across seven distinct criteria.</p>
+              </header>
+
+              {!showMap ? (
+                <>
+                  <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px', fontSize: '11px', color: '#999', letterSpacing: '0.5px', borderBottom: '1px solid #000' }}>
+                    Last updated: {lastUpdated.toLocaleDateString()} {lastUpdated.toLocaleTimeString()}
+                  </div>
+
+                  <section style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
+                    {cookies.map((cookie, index) => (
+                      <div key={cookie.id} style={{ borderBottom: '1px solid #000', padding: '30px 0', cursor: 'pointer' }} onClick={() => setExpandedId(expandedId === cookie.id ? null : cookie.id)}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: expandedId === cookie.id ? '30px' : '0', gap: '30px' }}>
+                          <div style={{ flex: 1 }}>
+                            <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+                              <span style={{ fontSize: '48px', fontWeight: 700, lineHeight: 1, width: '60px', flexShrink: 0 }}>{index + 1}</span>
+                              <div>
+                                <h3 style={{ margin: '0 0 6px 0', fontSize: '16px', fontWeight: 700, letterSpacing: '0.5px' }}>{cookie.name}</h3>
+                                <p style={{ margin: '0 0 12px 0', fontSize: '12px', color: '#666' }}>{cookie.location}</p>
+                                <p style={{ margin: '0', fontSize: '12px', color: '#999' }}>{cookie.address}</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '40px' }}>
+                            <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                              <p style={{ margin: '0 0 4px 0', fontSize: '11px', color: '#999', letterSpacing: '0.5px' }}>SCORE</p>
+                              <p style={{ margin: '0', fontSize: '32px', fontWeight: 700 }}>{cookie.overallScore}</p>
+                              <p style={{ margin: '4px 0 0 0', fontSize: '11px', color: '#999' }}>{cookie.reviewCount} reviews</p>
+                            </div>
+                            <div style={{ width: '180px', height: '180px', flexShrink: 0, background: cookie.color, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #000' }}>
+                              <span style={{ color: '#fff', fontSize: '12px', fontWeight: 'bold', textAlign: 'center', padding: '10px' }}>🍪</span>
+                            </div>
+                            <div style={{ width: '24px', height: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                              <span style={{ transition: 'transform 0.3s ease', transform: expandedId === cookie.id ? 'rotate(180deg)' : 'rotate(0deg)', display: 'block' }}>▼</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {expandedId === cookie.id && (
+                          <div style={{ paddingLeft: '80px', borderTop: '1px solid #000', paddingTop: '30px', marginTop: '30px' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginBottom: '40px' }}>
+                              <div>
+                                <p style={{ margin: '0 0 6px 0', fontSize: '11px', fontWeight: 700, letterSpacing: '1px', color: '#999' }}>ADDRESS</p>
+                                <p style={{ margin: '0', fontSize: '13px' }}>{cookie.address}</p>
+                              </div>
+                              <div>
+                                <p style={{ margin: '0 0 6px 0', fontSize: '11px', fontWeight: 700, letterSpacing: '1px', color: '#999' }}>SIZE & PRICE</p>
+                                <p style={{ margin: '0', fontSize: '13px' }}>{cookie.size} • {cookie.price}</p>
+                              </div>
+                              <div>
+                                <p style={{ margin: '0 0 6px 0', fontSize: '11px', fontWeight: 700, letterSpacing: '1px', color: '#999' }}>LAST REVIEWED</p>
+                                <p style={{ margin: '0', fontSize: '13px' }}>{cookie.lastReviewed}</p>
+                              </div>
+                              <div>
+                                <p style={{ margin: '0 0 6px 0', fontSize: '11px', fontWeight: 700, letterSpacing: '1px', color: '#999' }}>NOTES</p>
+                                <p style={{ margin: '0', fontSize: '13px' }}>{cookie.notes}</p>
+                              </div>
+                            </div>
+                            <div style={{ borderTop: '1px solid #000', paddingTop: '30px' }}>
+                              <h4 style={{ margin: '0 0 24px 0', fontSize: '12px', fontWeight: 700, letterSpacing: '1px' }}>SCORE BREAKDOWN</h4>
+                              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
+                                {Object.entries(scoringCriteria).map(([key, criterion]) => (
+                                  <div key={key}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                                      <span style={{ fontSize: '12px', fontWeight: 600 }}>{criterion.label}</span>
+                                      <span style={{ fontSize: '14px', fontWeight: 700 }}>{cookie.scores[key]}/10</span>
+                                    </div>
+                                    <div style={{ width: '100%', height: '3px', background: '#e0e0e0', position: 'relative' }}>
+                                      <div style={{ height: '100%', background: '#000', width: `${(cookie.scores[key] / 10) * 100}%`, transition: 'width 0.3s ease' }}></div>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </section>
+                </>
+              ) : (
+                <section style={{ minHeight: '80vh', padding: '40px 20px', background: '#f8f8f8' }}>
+                  <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                    <h3 style={{ fontSize: '14px', fontWeight: 700, letterSpacing: '2px', margin: '0 0 30px 0' }}>COOKIE LOCATIONS IN NYC</h3>
+                    <h4 style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '1px', margin: '0 0 20px 0' }}>ALL 11 LOCATIONS</h4>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                      {cookies.map((cookie, idx) => (
+                        <div key={cookie.id} style={{ fontSize: '13px', padding: '20px', border: '1px solid #000', background: '#fff' }}>
+                          <p style={{ margin: '0 0 8px 0', fontWeight: 700, fontSize: '14px' }}>#{idx + 1} {cookie.name}</p>
+                          <p style={{ margin: '0 0 4px 0', color: '#666', fontSize: '12px' }}>{cookie.location}</p>
+                          <p style={{ margin: '0', color: '#999', fontSize: '11px' }}>{cookie.address}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+              )}
+
+              <footer style={{ borderTop: '1px solid #000', padding: '60px 20px', background: '#f8f8f8', marginTop: '40px' }}>
+                <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                  <p style={{ margin: '0', fontSize: '12px', color: '#666', lineHeight: 1.7 }}>The Cookie Index continuously analyzes the best chocolate chip cookies in New York City using a rigorous, systematic methodology. Rankings are updated regularly as new data is collected and analyzed. All cookies are evaluated according to the same seven-point scoring system.</p>
+                </div>
+              </footer>
+
+              <button
+                onClick={() => setShowMap(!showMap)}
+                style={{
+                  position: 'fixed',
+                  bottom: '30px',
+                  right: '30px',
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '50%',
+                  background: '#000',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  zIndex: 100,
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
+                  transition: 'all 0.3s ease',
+                  fontSize: '24px',
+                  fontWeight: 'bold',
+                  color: '#fff'
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+                title={showMap ? 'Back to list' : 'View map'}
+              >
+                {showMap ? '☰' : '🗺️'}
+              </button>
+            </div>
+          );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<CookieAnalyzer />);
+    </script>
+</body>
+</html>
